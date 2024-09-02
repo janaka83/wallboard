@@ -1,50 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallboard Display with Main and Smaller Iframes</title>
+    <style>
+        /* Apply a beautiful landscape background image */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg'); /* Replace with your own image URL */
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
 
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
+        /* Main container for the grid layout */
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 3fr; /* Main iframe takes up 2/5 of the width, others take up 3/5 */
+            grid-template-rows: repeat(3, 1fr); /* Three equal rows */
+            gap: 20px; /* Space between the items */
+            padding: 40px; /* Padding around the grid */
+            height: 100vh; /* Full height of the screen */
+            box-sizing: border-box;
+        }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+        /* Styling for each iframe container */
+        .iframe-container {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker transparent background for contrast */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Ensures rounded corners apply to iframe */
+        }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
-</style>
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Grid placement */
+        .main-iframe {
+            grid-column: 1 / 2; /* Span first column */
+            grid-row: 1 / 4; /* Span all three rows */
+        }
+
+        .other-iframes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns for the right side */
+            grid-template-rows: repeat(3, 1fr); /* Three rows for the right side */
+            gap: 20px; /* Space between the items */
+            grid-column: 2 / 3; /* Span second column of the main grid */
+            grid-row: 1 / 4; /* Span all three rows */
+        }
+
+        .other-iframe {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker transparent background for contrast */
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Ensures rounded corners apply to iframe */
+        }
+
+        /* Adjust the size of the smaller iframe */
+        .small-iframe {
+            grid-row: span 2; /* Make the smaller iframe span two rows */
+        }
+
+        /* Responsive design: Adjust the layout on smaller screens */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr; /* Single column layout on medium screens */
+                grid-template-rows: repeat(5, 1fr); /* Five rows for better fitting */
+            }
+
+            .main-iframe {
+                grid-column: 1 / 2; /* Single column layout for the main iframe */
+                grid-row: 1 / 3; /* Main iframe spans two rows */
+            }
+
+            .other-iframes {
+                grid-column: 1 / 2; /* Single column layout for the other iframes */
+                grid-row: 3 / 6; /* Adjust rows for other iframes */
+                display: block;
+            }
+
+            .other-iframe {
+                margin-bottom: 20px; /* Add margin for spacing */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Single column layout on small screens */
+                grid-template-rows: repeat(6, 1fr); /* Six rows for better fitting */
+            }
+
+            .main-iframe {
+                grid-column: 1 / 2; /* Single column layout for the main iframe */
+                grid-row: 1 / 2; /* Main iframe spans one row */
+            }
+
+            .other-iframes {
+                grid-column: 1 / 2; /* Single column layout for the other iframes */
+                grid-row: 2 / 7; /* Adjust rows for other iframes */
+                display: block;
+            }
+
+            .other-iframe {
+                margin-bottom: 20px; /* Add margin for spacing */
+            }
+        }
+    </style>
 </head>
 <body>
-
-<h2>Responsive Two Column Layout</h2>
-<p>Resize the browser window to see the responsive effect (the columns will stack on top of each other instead of floating next to each other, when the screen is less than 600px wide).</p>
-
-<div class="row">
-  <div class="column" style="background-color:#aaa;">
-    <h2>Column 1</h2>
-    <p>Some text..</p>
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2>Column 2</h2>
-    <p>Some text..</p>
-  </div>
-</div>
-
+    <div class="container">
+        <!-- Main iframe container -->
+        <div class="iframe-container main-iframe">
+            <iframe src="https://avgangstavla.vasttrafik.se/?
+            source=vasttrafikse-stopareadetailspage&stopAreaGid=9021014005435000"></iframe>
+        </div>
+        
+        <!-- Container for other iframes -->
+        <div class="other-iframes">
+            <div class="iframe-container other-iframe">
+                <iframe src="https://www.yr.no/en/content/1-72837/card.html?mode=dark"></iframe>
+            </div>
+            <div class="iframe-container other-iframe">
+                <!--Dayspedia.com widget--><iframe width='264' height='166' style='padding:0!important;margin:0!important;border:none!important;background:none!important;background:transparent!important' marginheight='0' marginwidth='0' frameborder='0' scrolling='no' comment='/*defined*/' src='https://dayspedia.com/if/digit/?v=1&iframe=eyJ3LTEyIjp0cnVlLCJ3LTExIjp0cnVlLCJ3LTEzIjpmYWxzZSwidy0xNCI6dHJ1ZSwidy0xNSI6ZmFsc2UsInctMTEwIjpmYWxzZSwidy13aWR0aC0wIjp0cnVlLCJ3LXdpZHRoLTEiOmZhbHNlLCJ3LXdpZHRoLTIiOmZhbHNlLCJ3LTE2IjoiMjRweCIsInctMTkiOiI0OCIsInctMTciOiIxNiIsInctMjEiOnRydWUsImJnaW1hZ2UiOjEyLCJiZ2ltYWdlU2V0Ijp0cnVlLCJ3LTIxYzAiOiIjZmZmZmZmIiwidy0wIjp0cnVlLCJ3LTMiOnRydWUsInctM2MwIjoiIzM0MzQzNCIsInctM2IwIjoiMSIsInctNiI6IiMxYTA2YjciLCJ3LTIwIjp0cnVlLCJ3LTQiOiIjMDA3ZGJmIiwidy0xOCI6dHJ1ZSwidy13aWR0aC0yYy0wIjoiMzAwIiwidy0xMTUiOmZhbHNlfQ==&lang=en&cityid=7306'></iframe><!--Dayspedia.com widget ENDS-->
+            </div>
+            <div class="iframe-container other-iframe small-iframe">
+                <iframe src="https://www.yr.no/en/content/2-2711537/table.html?mode=dark"></iframe>
+            </div>
+            <div class="iframe-container other-iframe ">
+                <iframe src=""></iframe>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
