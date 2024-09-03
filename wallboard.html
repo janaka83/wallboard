@@ -70,50 +70,7 @@
             grid-row: span 2; /* Make the smaller iframe span two rows */
         }
 
-        /* Responsive design: Adjust the layout on smaller screens */
-        @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr; /* Single column layout on medium screens */
-                grid-template-rows: repeat(5, 1fr); /* Five rows for better fitting */
-            }
-
-            .main-iframe {
-                grid-column: 1 / 2; /* Single column layout for the main iframe */
-                grid-row: 1 / 3; /* Main iframe spans two rows */
-            }
-
-            .other-iframes {
-                grid-column: 1 / 2; /* Single column layout for the other iframes */
-                grid-row: 3 / 6; /* Adjust rows for other iframes */
-                display: block;
-            }
-
-            .other-iframe {
-                margin-bottom: 20px; /* Add margin for spacing */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr; /* Single column layout on small screens */
-                grid-template-rows: repeat(6, 1fr); /* Six rows for better fitting */
-            }
-
-            .main-iframe {
-                grid-column: 1 / 2; /* Single column layout for the main iframe */
-                grid-row: 1 / 2; /* Main iframe spans one row */
-            }
-
-            .other-iframes {
-                grid-column: 1 / 2; /* Single column layout for the other iframes */
-                grid-row: 2 / 7; /* Adjust rows for other iframes */
-                display: block;
-            }
-
-            .other-iframe {
-                margin-bottom: 20px; /* Add margin for spacing */
-            }
-        }
+       
     </style>
 </head>
 <body>
