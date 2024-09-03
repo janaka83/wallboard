@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Iframe Layout with Background Image</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Background image for the page */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        /* Ensuring the iframes fill their containers */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Make the columns and iframes take up the full height of the viewport */
+        .full-height {
+            height: 100vh;
+        }
+        /* Half the height of the screen for vertically stacked iframes */
+        .half-height {
+            height: 50vh;
+        }
+        /* Flexbox layout to adjust the width automatically */
+        .flex-container {
+            display: flex;
+            height: 100%;
+            padding: 15px; /* Space around the frames */
+            box-sizing: border-box; /* Include padding in the element's width and height */
+        }
+        .left-col {
+            flex: 1; /* Take up remaining space */
+            margin-right: 15px; /* Space between left and right columns */
+        }
+        .right-col {
+            flex: 0 1 auto; /* Take as much width as needed */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between the two right-side iframes */
+           min-width: 40% ;
+        }
+        .right-top {
+            flex: 0 1 auto; /* Take as much width as needed */
+            display: flex;
+            flex-direction: row;
+            gap: 15px; /* Space between the two right-side iframes */
+           min-width: 40% ;
+           min-height: auto;
+        }
+        /* Scale the iframes */
+        .scaled-iframe {
+            transform-origin: top left; /* Ensure scaling starts from the top-left corner */
+            transform: scale(0.5); /* Adjust this scale factor as needed */
+            width: calc(100% / 0.5); /* Adjust width to counteract scaling */
+            height: calc(100% / 0.5); /* Adjust height to counteract scaling */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid h-100">
+        <div class="flex-container">
+            <!-- First iframe taking up remaining space -->
+            <div class="left-col full-height">
+                <iframe src="https://avgangstavla.vasttrafik.se/?source=vasttrafikse-stopareadetailspage&stopAreaGid=9021014005435000"></iframe>
+            </div>
+            <!-- Second column with two iframes stacked vertically and auto width -->
+            <div class="right-col full-height">
+                <div class="full-height half-height right-top">
+                    <iframe class="scaled-iframe" src="https://www.yr.no/en/content/2-2711537/card.html?mode=dark"></iframe>
+                </div>
+                <div class="full-height half-height">
+                    <iframe class="scaled-iframe" src="https://www.yr.no/en/content/2-2711537/table.html?mode=dark"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js
